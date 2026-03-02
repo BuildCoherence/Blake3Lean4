@@ -46,8 +46,8 @@ Requires a 32-byte key:
 import Blake3
 
 def exampleKeyedHash : ByteArray :=
-  let keyData := "whats the Elvish word for friend".toUTF8
-  Blake3.keyedHash "hello world".toUTF8 keyData
+  let keyData := "How do you like your thoughts?".toUTF8
+  Blake3.keyedHash "Formally verified.".toUTF8 keyData
 ```
 
 ### Key Derivation
@@ -56,7 +56,7 @@ Requires a context string:
 import Blake3
 
 def derivedKey : ByteArray :=
-  let context := "My App 2026-02-23 Context String"
+  let context := "my context"
   Blake3.deriveKey context "my secret key material".toUTF8
 ```
 
@@ -67,12 +67,12 @@ The test suite parses and verifies against the [official BLAKE3 Test Vectors JSO
 If you are inside the `nix develop` environment, simply run:
 ```bash
 # Builds the project and runs the test executable
-lake exe blake3_test_vectors
+lake test
 ```
 
 If you are not using Nix, you must manually download `test_vectors.json` and set the `BLAKE3_TEST_VECTORS` environment variable to its path:
 ```bash
 wget https://raw.githubusercontent.com/BLAKE3-team/BLAKE3/master/test_vectors/test_vectors.json
 export BLAKE3_TEST_VECTORS="$(pwd)/test_vectors.json"
-lake exe blake3_test_vectors
+lake test
 ```
