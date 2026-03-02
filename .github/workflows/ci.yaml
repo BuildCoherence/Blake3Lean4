@@ -1,0 +1,25 @@
+name: Lean 4 CI with Nix
+
+on:
+  push:
+    branches: [ "main" ] # Adjust if your default branch is 'master'
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+
+      - name: Set up Magic Nix Cache
+        uses: DeterminateSystems/magic-nix-cache-action@main
+
+      - name: Build and Test (Nix managed Lean)
+        run: |
+          nix develop --command bash -c "lake test"
