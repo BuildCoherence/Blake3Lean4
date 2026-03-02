@@ -2,6 +2,9 @@
 
 A pure Lean 4 standalone implementation of the [BLAKE3 cryptographic hash function](https://github.com/BLAKE3-team/BLAKE3).
 
+> [!IMPORTANT]
+> This implementation has not been audited and is recommended for research and experimental use only.
+
 This implementation supports:
 - Standard BLAKE3 Hashing
 - Keyed Hashing
